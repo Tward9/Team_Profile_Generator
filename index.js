@@ -143,11 +143,13 @@ function getManager() {
 function getEmployee() {
     newEmployee = [];
     inquirer.prompt(employeeQuestions).then((answers2) => {
+        //do stuff
         newEmployee.push(answers2);
         if (answers2.addEmployee === 'yes') {
             getEmployee();
             output.push(newEmployee);
         }else {
+            //do something
             console.log(output);
         }
         return newEmployee;
