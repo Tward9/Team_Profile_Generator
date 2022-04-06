@@ -1,4 +1,3 @@
-const { expect } = require('@jest/globals');
 const employee = require('../lib/employee');
 
 describe('employee', () =>{
@@ -24,7 +23,7 @@ describe('employee', () =>{
         });
     });
     describe('getRole', () =>{
-        it(`should output the employee's email`, () => {
+        it(`should output the employee's role`, () => {
             const person = new employee('name', '1', 'name.email');
 
             expect(person.getRole()).toBe(`Employee's Role: Employee`)
