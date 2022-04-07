@@ -151,6 +151,7 @@ function getManager() {
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
                 };
             });
+            createHTML(answers);
         };
     });
 };
@@ -218,6 +219,11 @@ function getEmployee() {
         };
     });
 };
+function createHTML(output) {
+    const HTML = eval("`" + fs.readFileSync("./src/template.html", "utf-8") + "`");
+    console.log(HTML)
+    fs.writeFileSync("index.html", HTML)
+}
 getManager();
 //figure out how to get teammembers into template html, why do we even have the classes? is it just to show tests working?
 //need to create cards dynamically based off of team members...

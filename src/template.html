@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,31 +16,29 @@
         <h1>My Team</h1>
     </section>
     <section id="cardSection" class="d-flex">
-        <!-- <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title info">${teammember.employeeName}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"></li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-              </ul>
-            </div>
-          </div> -->
+        
     </section>
 </body>
 <script>
     output.forEach(teammember => {
         const cardDiv = document.createElement('div');
+        cardDiv.classList.add('card');
         const cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
         const cardTitle = document.createElement('h5');
+        cardTitle.classList.add('card-title', 'info');
         const cardSubtitle = document.createElement('h6');
+        cardSubtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
         const cardListGroup = document.createElement('ul');
+        cardListGroup.classList.add('list-group', 'list-group-flush');
         if (teammember.employeeType === 'Engineer') {
             const liOne = document.createElement('li');
+            liOne.classList.add('list-group-item');
             const liTwo = document.createElement('li');
+            liTwo.classList.add('list-group-item');
             const liTwoLink = document.createElement('a');
             const liThree = document.createElement('li');
+            liThree.classList.add('list-group-item');
             const liThreeLink = document.createElement('a');
             cardTitle.innerHTML = `${teammember.engineerName}`;
             cardSubtitle.innerHTML = `Engineer`;
@@ -57,12 +55,42 @@
             document.getElementById('cardSection').appendChild(cardDiv);
         }else if (teammember.employeeType === 'Intern') {
             const liOne = document.createElement('li');
+            liOne.classList.add('list-group-item');
             const liTwo = document.createElement('li');
+            liTwo.classList.add('list-group-item');
+            const liTwoLink = document.createElement('a');
             const liThree = document.createElement('li');
+            liThree.classList.add('list-group-item');
+            cardTitle.innerHTML = `${teammember.internName}`;
+            cardSubtitle.innerHTML = `Intern`;
+            liOne.innerHTML = `ID: ${teammember.internId}`;
+            liTwoLink.textContent = `Email: ${teammember.internEmail}`;
+            liTwoLink.setAttribute(`href`, `mailto:${teammember.internEmail}`);
+            liTwo.appendChild(liTwoLink);
+            liThree.innerHTML = `School: ${teammember.school}`;
+            cardListGroup.appendChild(liOne, liTwo, liThree);
+            cardBody.appendChild(cardTitle, cardSubtitle, cardListGroup);
+            cardDiv.appendChild(cardBody);
+            document.getElementById('cardSection').appendChild(cardDiv);
         }else {
             const liOne = document.createElement('li');
+            liOne.classList.add('list-group-item');
             const liTwo = document.createElement('li');
+            liTwo.classList.add('list-group-item');
+            const liTwoLink = document.createElement('a');
             const liThree = document.createElement('li');
+            liThree.classList.add('list-group-item');
+            cardTitle.innerHTML = `${teammember.employeeName}`;
+            cardSubtitle.innerHTML = `Manager`;
+            liOne.innerHTML = `ID: ${teammember.internId}`;
+            liTwoLink.textContent = `Email: ${teammember.email}`;
+            liTwoLink.setAttribute(`href`, `mailto:${teammember.email}`);
+            liTwo.appendChild(liTwoLink);
+            liThree.innerHTML = `Office Number: ${teammember.officeNumber}`;
+            cardListGroup.appendChild(liOne, liTwo, liThree);
+            cardBody.appendChild(cardTitle, cardSubtitle, cardListGroup);
+            cardDiv.appendChild(cardBody);
+            document.getElementById('cardSection').appendChild(cardDiv);
         };
     });
 </script>
