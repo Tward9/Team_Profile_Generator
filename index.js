@@ -2,6 +2,7 @@ const employee = require('./lib/employee');
 const manager = require('./lib/manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
+const fs = require('fs');
 const inquirer = require('inquirer');
 const output = [];
 let newEmployee = [];
@@ -148,9 +149,9 @@ function getManager() {
                 }else {
                     console.log(`Creating Manager Profile`);
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
-                }
-            })
-        }
+                };
+            });
+        };
     });
 };
 function getEmployee() {
@@ -177,9 +178,9 @@ function getEmployee() {
                     }else {
                         console.log(`Creating Manager Profile`);
                         new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
-                    }
-                })
-            }
+                    };
+                });
+            };
         } else if (answers2.employeeType === 'Intern') {
             //add new intern(answers2.stuff) to array?
             output.push(answers2);
@@ -198,9 +199,9 @@ function getEmployee() {
                     }else {
                         console.log(`Creating Manager Profile`);
                         new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
-                    }
-                })
-            }
+                    };
+                });
+            };
         }else {
             output.forEach(teammember => {
                 if (teammember.employeeType === 'Engineer') {
@@ -212,9 +213,11 @@ function getEmployee() {
                 }else {
                     console.log(`Creating Manager Profile`);
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
-                }
-            })
-        }
+                };
+            });
+        };
     });
-}
+};
 getManager();
+//figure out how to get teammembers into template html, why do we even have the classes? is it just to show tests working?
+//need to create cards dynamically based off of team members...
