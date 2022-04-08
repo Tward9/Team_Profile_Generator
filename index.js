@@ -8,6 +8,9 @@ const output = [];
 let newEmployee = [];
 let engineers = [];
 let interns = [];
+const HTMLTemplate = require('./util/HTMLTemplate');
+const createManager = require('./util/createManager');
+const createEngineer = require('./util/createEngineer');
 const managerQuestions = [
     //name
     {
@@ -139,6 +142,7 @@ function getManager() {
             // output.push(newEmployee);
         } else {
             // do something
+            console.log(output);
             output.forEach(teammember => {
                 if (teammember.employeeType === 'Engineer') {
                     console.log('Creating Engineer Profile');
@@ -150,8 +154,8 @@ function getManager() {
                     console.log(`Creating Manager Profile`);
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
                 };
+                createHTML(teammember);
             });
-            createHTML(answers);
         };
     });
 };
@@ -180,6 +184,7 @@ function getEmployee() {
                         console.log(`Creating Manager Profile`);
                         new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
                     };
+                    createHTML(teammember);
                 });
             };
         } else if (answers2.employeeType === 'Intern') {
@@ -201,6 +206,7 @@ function getEmployee() {
                         console.log(`Creating Manager Profile`);
                         new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
                     };
+                    createHTML(teammember);
                 });
             };
         }else {
@@ -215,14 +221,19 @@ function getEmployee() {
                     console.log(`Creating Manager Profile`);
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
                 };
+                createHTML(teammember);
             });
         };
     });
 };
-function createHTML(output) {
-    const HTML = eval("`" + fs.readFileSync("./src/template.html", "utf-8") + "`");
-    console.log(HTML)
-    fs.writeFileSync("index.html", HTML)
+function createHTML(teammember) {
+    const HTML = HTMLTemplate(teammember);
+    const managerHTML = createManager(teammember);
+    const engineerHTML = createEngineer(teammember);
+    const fullHTML = HTML + engineerHTML + managerHTML;
+    console.log(HTML);
+    console.log(fullHTML);
+    fs.writeFileSync("./src/index.html", fullHTML);
 }
 getManager();
 //figure out how to get teammembers into template html, why do we even have the classes? is it just to show tests working?
