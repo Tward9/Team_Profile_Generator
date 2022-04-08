@@ -27,8 +27,12 @@ function createEngineer(teammember) {
     liThreeLink.textContent = 'GitHub: ${teammember.github}';
     liThreeLink.setAttribute('href', 'https://github.com/${teammember.github}');
     liThree.appendChild(liThreeLink);
-    cardListGroup.appendChild(liOne, liTwo, liThree);
-    cardBody.appendChild(cardTitle, cardSubtitle, cardListGroup);
+    cardListGroup.appendChild(liOne);
+    cardListGroup.appendChild(liTwo);
+    cardListGroup.appendChild(liThree);
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardSubtitle); 
+    cardBody.appendChild(cardListGroup);
     cardDiv.appendChild(cardBody);
     document.getElementById('cardSection').appendChild(cardDiv);
     };

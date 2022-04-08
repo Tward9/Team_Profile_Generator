@@ -11,6 +11,7 @@ let interns = [];
 const HTMLTemplate = require('./util/HTMLTemplate');
 const createManager = require('./util/createManager');
 const createEngineer = require('./util/createEngineer');
+const createIntern = require('./util/createIntern');
 let totalEngineerHTML = '';
 let totalManagerHTML = '';
 let totalInternHTML = '';
@@ -155,6 +156,8 @@ function getManager() {
                     // consclole.log(engineerHTML);
                 } else if (teammember.employeeType === 'Intern') {
                     console.log(`Creating Intern Profile`);
+                    const internHTML = createIntern(teammember);
+                    totalInternHTML += internHTML;
                     new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
                 } else {
                     console.log(`Creating Manager Profile`);
@@ -193,6 +196,8 @@ function getEmployee() {
                         // consclole.log(engineerHTML);
                     } else if (teammember.employeeType === 'Intern') {
                         console.log(`Creating Intern Profile`);
+                        const internHTML = createIntern(teammember);
+                        totalInternHTML += internHTML;
                         new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
                     } else {
                         console.log(`Creating Manager Profile`);
@@ -203,7 +208,7 @@ function getEmployee() {
                     };
 
                 });
-                createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
+                createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML);
             };
         } else if (answers2.employeeType === 'Intern') {
             //add new intern(answers2.stuff) to array?
@@ -223,6 +228,8 @@ function getEmployee() {
                         // consclole.log(engineerHTML);
                     } else if (teammember.employeeType === 'Intern') {
                         console.log(`Creating Intern Profile`);
+                        const internHTML = createIntern(teammember);
+                        totalInternHTML += internHTML;
                         new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
                     } else {
                         console.log(`Creating Manager Profile`);
@@ -233,7 +240,7 @@ function getEmployee() {
                     };
 
                 });
-                createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
+                createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML);
             };
         } else {
             output.forEach(teammember => {
@@ -246,6 +253,8 @@ function getEmployee() {
                     // consclole.log(engineerHTML);
                 } else if (teammember.employeeType === 'Intern') {
                     console.log(`Creating Intern Profile`);
+                    const internHTML = createIntern(teammember);
+                    totalInternHTML += internHTML;
                     new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
                 } else {
                     console.log(`Creating Manager Profile`);
@@ -256,7 +265,7 @@ function getEmployee() {
                 };
 
             });
-            createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
+            createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML);
         };
     });
 };
