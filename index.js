@@ -176,6 +176,7 @@ function getEmployee() {
                 output.forEach(teammember => {
                     if (teammember.employeeType === 'Engineer') {
                         console.log('Creating Engineer Profile');
+                        
                         new engineer(teammember.engineerName, teammember.engineerId, teammember.engineerEmail, teammember.github);
                     }else if (teammember.employeeType === 'Intern') {
                         console.log(`Creating Intern Profile`);
@@ -231,10 +232,11 @@ function createHTML(teammember) {
     const managerHTML = createManager(teammember);
     const engineerHTML = createEngineer(teammember);
     const fullHTML = HTML + engineerHTML + managerHTML;
-    console.log(HTML);
+    // console.log(HTML);
     console.log(fullHTML);
     fs.writeFileSync("./src/index.html", fullHTML);
 }
 getManager();
-//figure out how to get teammembers into template html, why do we even have the classes? is it just to show tests working?
-//need to create cards dynamically based off of team members...
+//need to only generate html one time, but have card info added for every instance of a profile.
+//in the loops, create more javascript to add everytime that type shows up?
+//mush all together at end of loops some how

@@ -1,5 +1,5 @@
 function createManager(teammember) {
-    const managerHTML = `
+    const managerHTML = `function createManager() {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('card');
         const cardBody = document.createElement('div');
@@ -29,7 +29,8 @@ function createManager(teammember) {
         cardBody.appendChild(cardTitle, cardSubtitle, cardListGroup);
         cardDiv.appendChild(cardBody);
         document.getElementById('cardSection').appendChild(cardDiv);
-    
+    };
+    createMangaer();
 
     </script>
     

@@ -1,5 +1,5 @@
 function createEngineer(teammember) {
-    const engineerHTML = `
+    const engineerHTML = `function createEngineer() {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     const cardBody = document.createElement('div');
@@ -31,6 +31,8 @@ function createEngineer(teammember) {
     cardBody.appendChild(cardTitle, cardSubtitle, cardListGroup);
     cardDiv.appendChild(cardBody);
     document.getElementById('cardSection').appendChild(cardDiv);
+    };
+    createEngineer();
     `;
     return engineerHTML;
 }
