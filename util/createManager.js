@@ -20,7 +20,7 @@ function createManager(teammember) {
         liThree.classList.add('list-group-item');
         cardTitle.innerHTML = '${teammember.employeeName}';
         cardSubtitle.innerHTML = 'Manager';
-        liOne.innerHTML = 'ID: ${teammember.internId}';
+        liOne.innerHTML = 'ID: ${teammember.id}';
         liTwoLink.textContent = 'Email: ${teammember.email}';
         liTwoLink.setAttribute('href', 'mailto:${teammember.email}');
         liTwo.appendChild(liTwoLink);
@@ -30,7 +30,7 @@ function createManager(teammember) {
         cardDiv.appendChild(cardBody);
         document.getElementById('cardSection').appendChild(cardDiv);
     };
-    createMangaer();
+    createManager();
 
     </script>
     

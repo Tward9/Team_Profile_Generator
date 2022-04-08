@@ -11,6 +11,9 @@ let interns = [];
 const HTMLTemplate = require('./util/HTMLTemplate');
 const createManager = require('./util/createManager');
 const createEngineer = require('./util/createEngineer');
+let totalEngineerHTML = '';
+let totalManagerHTML = '';
+let totalInternHTML = '';
 const managerQuestions = [
     //name
     {
@@ -142,20 +145,27 @@ function getManager() {
             // output.push(newEmployee);
         } else {
             // do something
-            console.log(output);
             output.forEach(teammember => {
                 if (teammember.employeeType === 'Engineer') {
                     console.log('Creating Engineer Profile');
+                    const engineerHTML = createEngineer(teammember);
+                    totalEngineerHTML += engineerHTML;
+                    console.log(totalEngineerHTML);
                     new engineer(teammember.engineerName, teammember.engineerId, teammember.engineerEmail, teammember.github);
-                }else if (teammember.employeeType === 'Intern') {
+                    // consclole.log(engineerHTML);
+                } else if (teammember.employeeType === 'Intern') {
                     console.log(`Creating Intern Profile`);
                     new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
-                }else {
+                } else {
                     console.log(`Creating Manager Profile`);
+                    const managerHTML = createManager(teammember);
+                    totalManagerHTML += managerHTML;
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
+                    // console.log(managerHTML);
                 };
-                createHTML(teammember);
+
             });
+            createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
         };
     });
 };
@@ -176,17 +186,24 @@ function getEmployee() {
                 output.forEach(teammember => {
                     if (teammember.employeeType === 'Engineer') {
                         console.log('Creating Engineer Profile');
-                        
+                        const engineerHTML = createEngineer(teammember);
+                        totalEngineerHTML += engineerHTML;
+                        console.log(totalEngineerHTML);
                         new engineer(teammember.engineerName, teammember.engineerId, teammember.engineerEmail, teammember.github);
-                    }else if (teammember.employeeType === 'Intern') {
+                        // consclole.log(engineerHTML);
+                    } else if (teammember.employeeType === 'Intern') {
                         console.log(`Creating Intern Profile`);
                         new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
-                    }else {
+                    } else {
                         console.log(`Creating Manager Profile`);
+                        const managerHTML = createManager(teammember);
+                        totalManagerHTML += managerHTML;
                         new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
+                        // console.log(managerHTML);
                     };
-                    createHTML(teammember);
+
                 });
+                createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
             };
         } else if (answers2.employeeType === 'Intern') {
             //add new intern(answers2.stuff) to array?
@@ -199,39 +216,55 @@ function getEmployee() {
                 output.forEach(teammember => {
                     if (teammember.employeeType === 'Engineer') {
                         console.log('Creating Engineer Profile');
+                        const engineerHTML = createEngineer(teammember);
+                        totalEngineerHTML += engineerHTML;
+                        console.log(totalEngineerHTML);
                         new engineer(teammember.engineerName, teammember.engineerId, teammember.engineerEmail, teammember.github);
-                    }else if (teammember.employeeType === 'Intern') {
+                        // consclole.log(engineerHTML);
+                    } else if (teammember.employeeType === 'Intern') {
                         console.log(`Creating Intern Profile`);
                         new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
-                    }else {
+                    } else {
                         console.log(`Creating Manager Profile`);
+                        const managerHTML = createManager(teammember);
+                        totalManagerHTML += managerHTML;
                         new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
+                        // console.log(managerHTML);
                     };
-                    createHTML(teammember);
+
                 });
+                createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
             };
-        }else {
+        } else {
             output.forEach(teammember => {
                 if (teammember.employeeType === 'Engineer') {
                     console.log('Creating Engineer Profile');
+                    const engineerHTML = createEngineer(teammember);
+                    totalEngineerHTML += engineerHTML;
+                    console.log(totalEngineerHTML);
                     new engineer(teammember.engineerName, teammember.engineerId, teammember.engineerEmail, teammember.github);
-                }else if (teammember.employeeType === 'Intern') {
+                    // consclole.log(engineerHTML);
+                } else if (teammember.employeeType === 'Intern') {
                     console.log(`Creating Intern Profile`);
                     new intern(teammember.internName, teammember.internId, teammember.internEmail, teammember.school)
-                }else {
+                } else {
                     console.log(`Creating Manager Profile`);
+                    const managerHTML = createManager(teammember);
+                    totalManagerHTML += managerHTML;
                     new manager(teammember.employeeName, teammember.id, teammember.email, teammember.officeNumber)
+                    // console.log(managerHTML);
                 };
-                createHTML(teammember);
+
             });
+            createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML)
         };
     });
 };
-function createHTML(teammember) {
-    const HTML = HTMLTemplate(teammember);
-    const managerHTML = createManager(teammember);
-    const engineerHTML = createEngineer(teammember);
-    const fullHTML = HTML + engineerHTML + managerHTML;
+function createHTML(totalManagerHTML, totalEngineerHTML, totalInternHTML) {
+    const HTML = HTMLTemplate();
+    // const managerHTML = createManager(teammember);
+    // const engineerHTML = createEngineer(teammember);
+    const fullHTML = HTML + totalEngineerHTML + totalInternHTML + totalManagerHTML;
     // console.log(HTML);
     console.log(fullHTML);
     fs.writeFileSync("./src/index.html", fullHTML);

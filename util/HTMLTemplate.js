@@ -1,4 +1,4 @@
-function HTMLTemplate(teammember) {
+function HTMLTemplate() {
     const HTML =`<!DOCTYPE html>
     <html lang="en">
     
