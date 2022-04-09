@@ -1,5 +1,5 @@
 function createIntern(teammember) {
-    const internHTML = `function createIntern() {
+    const internHTML = `function createIntern${teammember.internName}() {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     const cardBody = document.createElement('div');
@@ -33,7 +33,7 @@ function createIntern(teammember) {
     cardDiv.appendChild(cardBody);
     document.getElementById('cardSection').appendChild(cardDiv);
     };
-    createIntern();
+    createIntern${teammember.internName}();
     `;
     return internHTML;
 }

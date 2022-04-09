@@ -1,5 +1,5 @@
 function createEngineer(teammember) {
-    const engineerHTML = `function createEngineer() {
+    const engineerHTML = `function createEngineer${teammember.engineerName}() {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     const cardBody = document.createElement('div');
@@ -36,7 +36,7 @@ function createEngineer(teammember) {
     cardDiv.appendChild(cardBody);
     document.getElementById('cardSection').appendChild(cardDiv);
     };
-    createEngineer();
+    createEngineer${teammember.engineerName}();
     `;
     return engineerHTML;
 }
