@@ -1,0 +1,38 @@
+body{
+    background-color: #8DA4D9;
+}
+#header{
+    text-align: center;
+    padding: 2em;
+    background-color: #ACA8F7;
+}
+h1{
+    font-size: 5em;
+}
+.card-body{
+    padding: .5em;
+}
+.card{
+    padding: .5em;
+    margin: .25em;
+    background-color: #BCA4E0;
+    font-size: 2em;
+    box-shadow: 5px 5px 5px;
+    transition: transform 1s;
+}
+.card-title{
+    font-size: 2.5em;
+}
+.car-subtitle{
+    font-size: 1.5em;
+}
+.card:hover{
+    box-shadow: 10px 10px 5px #EDA1DE;
+    transform: scale(1.15);
+}
+.list-group-item{
+    background-color: #BCA4E0;
+}
+.list-group-item:hover{
+    background-color: #E4A8F7;
+}

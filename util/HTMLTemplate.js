@@ -13,10 +13,10 @@ function HTMLTemplate() {
     </head>
 
 <body>
-<section id="header" class="success">
+<section id="header">
     <h1>My Team</h1>
 </section>
-<section id="cardSection" class="d-flex">
+<section id="cardSection" class="d-flex justify-content-around flex-wrap">
     
 </section>
 </body>
